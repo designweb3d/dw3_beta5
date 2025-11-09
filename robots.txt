@@ -1,0 +1,11 @@
+User-agent: Googlebot
+User-agent: AdsBot-Google
+User-agent: *
+disallow: /pub/section
+disallow: /pub/scene
+disallow: /sbin
+disallow: /app
+disallow: /legal
+disallow: /landing
+
+Sitemap: http://dw3.ca/sitemap.xml
