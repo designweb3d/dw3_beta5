@@ -1,0 +1,16 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/sbin/security.php'; 
+$prd_id   = $_GET['ID'];	
+$sql2 = "INSERT INTO product 
+(`id`, `stat`, `requiered_id`, `user_id`, `category_id`, `category2_id`, `category3_id`, `supplier_id`, `sku`, `upc`, `upc_box`, `billing`, `name_fr`, `name_en`, `description_fr`, `description_en`, `pack`, `qty_box`, `qty_max`, `type_unique`, `is_free`, `is_scheduled`, `price_decimal`, `stripe_price_id`, `prod_cost`, `cost`, `price1`, `price2`, `tax_fed`, `tax_prov`, `ship_type`, `allow_pickup`, `conservation_days`, `service_length`, `inter_length`, `liter`, `kg`, `height`, `width`, `depth`, `color_name`, `brand`, `model`, `color_code`, `web_dsp`, `web_btn_fr`, `web_btn_en`, `web_btn2_fr`, `web_btn2_en`, `web_btn_icon`, `web_btn2_icon`, `price_text_fr`, `price_text_en`, `price_suffix_fr`, `price_suffix_en`, `dsp_status`, `mag_dsp`, `dsp_opt`, `dsp_inv`, `dsp_upc`, `dsp_description`, `dsp_statistics`, `url_img`, `btn_action1`, `btn_action2`, `url_action1`, `url_action2`, `qty_min_sold`, `qty_max_sold`, `qty_max_by_inv`, `pack_desc`, `import_storage_id`, `export_storage_id`, `qty_min_price2`, `is_bio`, `consigne`, `price3`, `model_year`, `dsp_mesure`, `dsp_model`, `dsp_export_storage`, `promo_price`, `promo_expire`, `purchase_qty`, `qty_visited`, `date_start`, `date_end`, `date_created`, `date_modified`, `user_created`, `user_modified`)
+SELECT NULL,`stat`, `requiered_id`, `user_id`, `category_id`, `category2_id`, `category3_id`, `supplier_id`, `sku`, `upc`, `upc_box`, `billing`, CONCAT('copie de ',`name_fr`), `name_en`, `description_fr`, `description_en`, `pack`, `qty_box`, `qty_max`, `type_unique`, `is_free`, `is_scheduled`, `price_decimal`, `stripe_price_id`, `prod_cost`, `cost`, `price1`, `price2`, `tax_fed`, `tax_prov`, `ship_type`, `allow_pickup`, `conservation_days`, `service_length`, `inter_length`, `liter`, `kg`, `height`, `width`, `depth`, `color_name`, `brand`, `model`, `color_code`, `web_dsp`, `web_btn_fr`, `web_btn_en`, `web_btn2_fr`, `web_btn2_en`, `web_btn_icon`, `web_btn2_icon`, `price_text_fr`, `price_text_en`, `price_suffix_fr`, `price_suffix_en`, `dsp_status`, `mag_dsp`, `dsp_opt`, `dsp_inv`, `dsp_upc`, `dsp_description`, `dsp_statistics`, '', `btn_action1`, `btn_action2`, `url_action1`, `url_action2`, `qty_min_sold`, `qty_max_sold`, `qty_max_by_inv`, `pack_desc`, `import_storage_id`, `export_storage_id`, `qty_min_price2`, `is_bio`, `consigne`, `price3`, `model_year`, `dsp_mesure`, `dsp_model`, `dsp_export_storage`, `promo_price`, `promo_expire`, '0', '0', `date_start`, `date_end`, '" . $datetime  . "', '" . $datetime  . "', '" . $USER . "', '" . $USER . "' 
+FROM product WHERE id = '".$prd_id."';";
+if ($dw3_conn->query($sql2) === TRUE) {
+    $inserted_id = $dw3_conn->insert_id;
+    echo $inserted_id;
+    if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/fs/product/" . $inserted_id)){mkdir($_SERVER['DOCUMENT_ROOT'] . "/fs/product/" . $inserted_id);}
+} else {
+    echo $dw3_conn->error;
+}
+$dw3_conn->close();
+?>
