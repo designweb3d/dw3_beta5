@@ -1,0 +1,16 @@
+Début de la mise à jour: Sunday, November 9, 2025 <b>02:16:08pm</b>
+
+Téléchargement: https://ww7.ca/dw3/BETA6/app/event/event.php
+Installation: /home/uaqkv257/dev.ww7.ca/app/event/event.php (39.68Kb) 
+Téléchargement: https://ww7.ca/dw3/BETA6/app/event/getEVENTS.php
+Installation: /home/uaqkv257/dev.ww7.ca/app/event/getEVENTS.php (9.75Kb) 
+
+
+Mise à jour de la base de données:
+mysqli_sql_exception: Duplicate column name 'parent_id' in /home/uaqkv257/dev.ww7.ca/sbin/update_dw3.php:174
+Stack trace:
+#0 /home/uaqkv257/dev.ww7.ca/sbin/update_dw3.php(174): mysqli_multi_query()
+#1 {main}
+
+
+Fin de la mise à jour: Sunday, November 9, 2025 <b>02:16:18pm</b>
