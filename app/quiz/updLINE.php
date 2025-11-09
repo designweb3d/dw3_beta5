@@ -1,0 +1,126 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/sbin/security.php'; 
+$ID   = $_GET['ID'];
+$POS  = $_GET['POS'];
+$TOT  = $_GET['T'];
+$MULT  = $_GET['M'];
+$MULT_L  = $_GET['ML'];
+$REC  = $_GET['REC'];
+$TYPE  = $_GET['TYPE'];
+$ALIGN  = $_GET['ALIGN'];
+$REQ  = $_GET['REQ'];
+$SIZE  = $_GET['SIZE'];
+$PRD  = $_GET['PRD'];
+$EXCLUDE  = $_GET['EX'];
+$LAST  = $_GET['LS'];
+$NAME   = mysqli_real_escape_string($dw3_conn, $_GET['NAME']);
+$DESC   = mysqli_real_escape_string($dw3_conn, $_GET['DESC']);
+$NAME_EN   = mysqli_real_escape_string($dw3_conn, $_GET['NAME_EN']);
+$DESC_EN   = mysqli_real_escape_string($dw3_conn, $_GET['DESC_EN']);
+$C1   = str_replace("'","’", $_GET['C1']);
+$C1_EN   = str_replace("'","’", $_GET['C1_EN']);
+$V1   = str_replace("'","’", $_GET['V1']);
+$I1   = str_replace("'","’", $_GET['I1']);
+$C2   = str_replace("'","’", $_GET['C2']);
+$C2_EN   = str_replace("'","’", $_GET['C2_EN']);
+$V2   = str_replace("'","’", $_GET['V2']);
+$I2   = str_replace("'","’", $_GET['I2']);
+$C3   = str_replace("'","’", $_GET['C3']);
+$C3_EN   = str_replace("'","’", $_GET['C3_EN']);
+$V3   = str_replace("'","’", $_GET['V3']);
+$I3   = str_replace("'","’", $_GET['I3']);
+$C4   = str_replace("'","’", $_GET['C4']);
+$C4_EN   = str_replace("'","’", $_GET['C4_EN']);
+$V4   = str_replace("'","’", $_GET['V4']);
+$I4   = str_replace("'","’", $_GET['I4']);
+$C5   = str_replace("'","’", $_GET['C5']);
+$C5_EN   = str_replace("'","’", $_GET['C5_EN']);
+$V5   = str_replace("'","’", $_GET['V5']);
+$I5   = str_replace("'","’", $_GET['I5']);
+$C6   = str_replace("'","’", $_GET['C6']);
+$C6_EN   = str_replace("'","’", $_GET['C6_EN']);
+$V6   = str_replace("'","’", $_GET['V6']);
+$I6   = str_replace("'","’", $_GET['I6']);
+$C7   = str_replace("'","’", $_GET['C7']);
+$C7_EN   = str_replace("'","’", $_GET['C7_EN']);
+$V7   = str_replace("'","’", $_GET['V7']);
+$I7   = str_replace("'","’", $_GET['I7']);
+$C8   = str_replace("'","’", $_GET['C8']);
+$C8_EN   = str_replace("'","’", $_GET['C8_EN']);
+$V8   = str_replace("'","’", $_GET['V8']);
+$I8   = str_replace("'","’", $_GET['I8']);
+$C9   = str_replace("'","’", $_GET['C9']);
+$C9_EN   = str_replace("'","’", $_GET['C9_EN']);
+$V9   = str_replace("'","’", $_GET['V9']);
+$I9   = str_replace("'","’", $_GET['I9']);
+$C0   = str_replace("'","’", $_GET['C0']);
+$C0_EN   = str_replace("'","’", $_GET['C0_EN']);
+$V0   = str_replace("'","’", $_GET['V0']);
+$I0   = str_replace("'","’", $_GET['I0']);
+
+$sql = "UPDATE prototype_line SET    
+	 response_type   = '" . $TYPE   . "',
+	 response_align   = '" . $ALIGN   . "',
+	 record_name   = '" . $REC   . "',
+	 box_size   = '" . $SIZE   . "',
+	 position = '" . $POS   . "',
+	 last_on_page = '" . $LAST   . "',
+	 mandatory = '" . $REQ   . "',
+	 product_id   = '" . $PRD . "',
+	 is_total   = '" . $TOT . "',
+	 multiplier   = '" . $MULT . "',
+	 multiplied   = '" . $MULT_L . "',
+	 exclude_multiplier   = '" . $EXCLUDE . "',
+	 name_fr   = '" . $NAME   . "',
+	 name_en   = '" . $NAME_EN   . "',
+	 description_fr    = '" . $DESC    . "',
+	 description_en    = '" . $DESC_EN    . "',
+	 choice_name1    = '" . $C1    . "',
+	 choice_name1_en    = '" . $C1_EN    . "',
+	 choice_value1    = '" . $V1    . "',
+	 choice_img1    = '" . $I1    . "',
+	 choice_name2    = '" . $C2    . "',
+	 choice_name2_en    = '" . $C2_EN    . "',
+	 choice_value2    = '" . $V2    . "',
+	 choice_img2    = '" . $I2    . "',
+	 choice_name3    = '" . $C3    . "',
+	 choice_name3_en    = '" . $C3_EN    . "',
+	 choice_value3    = '" . $V3    . "',
+	 choice_img3    = '" . $I3    . "',
+	 choice_name4    = '" . $C4    . "',
+	 choice_name4_en    = '" . $C4_EN    . "',
+	 choice_value4    = '" . $V4    . "',
+	 choice_img4    = '" . $I4    . "',
+	 choice_name5    = '" . $C5    . "',
+	 choice_name5_en    = '" . $C5_EN    . "',
+	 choice_value5    = '" . $V5    . "',
+	 choice_img5    = '" . $I5    . "',
+	 choice_name6    = '" . $C6    . "',
+	 choice_name6_en    = '" . $C6_EN    . "',
+	 choice_value6    = '" . $V6    . "',
+	 choice_img6    = '" . $I6    . "',
+	 choice_name7    = '" . $C7    . "',
+	 choice_name7_en    = '" . $C7_EN    . "',
+	 choice_value7    = '" . $V7    . "',
+	 choice_img7    = '" . $I7    . "',
+	 choice_name8    = '" . $C8    . "',
+	 choice_name8_en    = '" . $C8_EN    . "',
+	 choice_value8    = '" . $V8    . "',
+	 choice_img8    = '" . $I8    . "',
+	 choice_name9    = '" . $C9    . "',
+	 choice_name9_en    = '" . $C9_EN    . "',
+	 choice_value9    = '" . $V9    . "',
+	 choice_img9    = '" . $I9    . "',
+	 choice_name0    = '" . $C0    . "',
+	 choice_name0_en    = '" . $C0_EN    . "',
+	 choice_value0    = '" . $V0    . "',
+	 choice_img0    = '" . $I0    . "'
+	 WHERE id = '" . $ID . "' 
+	 LIMIT 1";
+	if ($dw3_conn->query($sql) === TRUE) {
+	  echo "";
+	} else {
+	  echo $dw3_conn->error;
+	}
+$dw3_conn->close();
+?>
