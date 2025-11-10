@@ -222,8 +222,8 @@ $trackingUrl = $response->trackingUrl;
 { 
 "carrierName": "Dicom", 
 "orderNumber": 72, 
-"trackingNumber": "P00207336", 
-"trackingUrl": "https://www.dicom.com/fr/dicomexpress/suivi/detailssuivi/P00207336?Division=DicomExpress" 
+"trackingNumber": "D123456789012", 
+"trackingUrl": "https://www.dicom.com/fr/dicomexpress/suivi/detailssuivi/?Division=DicomExpress" 
 } 
 */
 
