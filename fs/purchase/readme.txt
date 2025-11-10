@@ -1,1 +1,0 @@
-Folder to store futur user files.
