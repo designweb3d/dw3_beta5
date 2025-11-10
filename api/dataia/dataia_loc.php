@@ -8,7 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/sbin/security.php';
     $PARENT = $_GET['p'];
 
     //DATAIA -canada id:47
-    $mysqli7 = mysqli_connect("localhost","uaqkv257_kufu","2IprgfQr@p8L","uaqkv257_UNIVERS");
+    $mysqli7 = mysqli_connect("","","","");
     $mysqli7->set_charset("utf8");
     //$charset = $mysqli7 -> character_set_name(); //echo "Default character set is: " . $charset;
 
