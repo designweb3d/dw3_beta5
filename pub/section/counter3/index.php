@@ -1,0 +1,11 @@
+<div style='background-color:<?php echo $SECTION_BG; ?>;width:100%;text-align:center;margin:<?php echo $SECTION_MARGIN; ?>;display:inline-block;text-align:center;height:auto;border-radius:<?php echo $SECTION_RADIUS; ?>;max-width:<?php echo $SECTION_MAXW; ?>;box-shadow: <?php echo $SECTION_SHADOW; ?>;'>
+    <div style='width:100%;margin:10px 0px 10px 0px;max-width:1140px;display:inline-block;'>
+        <table style='width:100%;table-layout:fixed;text-align:center;min-height:150px;'>
+            <tr>
+                <td style='border-radius:10px;background-color:#<?php echo $CIE_COLOR6; ?>;color:#<?php echo $CIE_COLOR7; ?>;'><span class="dw3_font" style="font-size:3.5em;color:#<?php echo $CIE_COLOR7; ?>;margin:20px;"><?php echo $COUNTER1_ICON; ?></span><br><b><span id='txtCounter1' style='font-size:1.8em;text-shadow:1px 1px 1px rgba(0,0,0,0.7);margin:10px 0px;'>0</span></b><br><span style='line-height:1.2;'><?php if($USER_LANG == "FR"){ echo $COUNTER1_FR;}else{echo $COUNTER1_EN;} ?></span></td>
+                <td style='border-radius:10px;background-color:#<?php echo $CIE_COLOR6; ?>;color:#<?php echo $CIE_COLOR7; ?>;'><span class="dw3_font" style="font-size:3.5em;color:#<?php echo $CIE_COLOR7; ?>;margin:20px;"><?php echo $COUNTER2_ICON; ?></span><br><b><span id='txtCounter2' style='font-size:1.8em;text-shadow:1px 1px 1px rgba(0,0,0,0.7);margin:10px 0px;'>0</span></b><br><span style='line-height:1.2;'><?php if($USER_LANG == "FR"){ echo $COUNTER2_FR;}else{echo $COUNTER2_EN;} ?></span></td>
+                <td style='border-radius:10px;background-color:#<?php echo $CIE_COLOR6; ?>;color:#<?php echo $CIE_COLOR7; ?>;'><span class="dw3_font" style="font-size:3.5em;color:#<?php echo $CIE_COLOR7; ?>;margin:20px;"><?php echo $COUNTER3_ICON; ?></span><br><b><span id='txtCounter3' style='font-size:1.8em;text-shadow:1px 1px 1px rgba(0,0,0,0.7);margin:10px 0px;'>0</span></b><br><span style='line-height:1.2;'><?php if($USER_LANG == "FR"){ echo $COUNTER3_FR;}else{echo $COUNTER3_EN;} ?></span></td>
+            </tr>
+        </table>
+    </div>
+</div>

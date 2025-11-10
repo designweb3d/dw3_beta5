@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis.zero path {
+  stroke: #bbb;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  left: 900px;
+	width:100px;
+	cursor:pointer;
+}
+
+.label {
+	 font: 9px tahoma;
+}
+</style>[###CLI]
+<label><input type="checkbox"> Trier par montant/periode</label><br>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var margin = {top: 20, right: 60, bottom: 105, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".0%");
+	
+var colors = ["tomato", "#39ac39"];
+			
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1, 1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+		.ticks(5)
+    .tickFormat( function(d) { return d } );
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+		.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		
+		
+		
+d3.tsv("data.tsv", function(error, data) {
+
+  data.forEach(function(d) {
+    d.frequency = +d.frequency;
+  });	
+	
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([d3.min(data, function(d) { return d.frequency; }), d3.max(data, function(d) { return d.frequency; })]);
+	
+svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)        
+			.selectAll("text")	
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", function(d) {
+                return "rotate(-65)"   });
+								
+svg.append("line")
+            .attr("x1", 0)
+            .attr("y1", function(d) { return y(0); })
+						.attr("x2", width)
+            .attr("y2", function(d) { return y(0)+1; })
+						.style("stroke", "#aaa");								
+								
+svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("QUANTITE");	
+			
+svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("width", x.rangeBand())
+			.style("fill", function(d) { if (d.frequency <= 0) { return colors[0]; } else { return colors[1]; }  })			
+          .attr("y", function(d) { if (d.frequency <= 0) { return y(0)+1; } else { return y(d.frequency); } })
+     .attr("height", function(d) { if (d.frequency <= 0) { return y(d.frequency)- y(0)-1; } else { return y(0) - y(d.frequency) ; } })
+				.on("mouseover", function() { tooltip.style("display", null); })
+				.on("mousemove", function(d) {
+					var xPosition = d3.mouse(this)[0]-5;
+					var yPosition = d3.mouse(this)[1]-30;
+					tooltip.attr("transform", "translate(" + (x(d.letter)) + "," + yPosition + ")");
+					tooltip.select("text").text(d.frequency + " $");
+					tooltip.attr("font-size", "14px")  });
+
+var tooltip = svg.append("g")
+  .attr("class", "tooltip")
+  .style("display", "none");
+    
+tooltip.append("rect")
+  .attr("width", 100)
+  .attr("height", 20)
+  .attr("fill", "black")
+  .style("opacity", 0.5);
+
+tooltip.append("text")
+  .attr("x", 50)
+  .attr("dy", "1.2em")
+  .style("text-anchor", "middle")
+  .attr("font-size", "12px")
+	  .style("fill", "#fff")
+  .attr("font-weight", "bold");					
+					
+var label = svg.selectAll(".label")
+  .data(data)
+  .enter().append("text")
+  .attr("class", "label")
+	.attr("text-anchor", "middle")
+  .style("fill", "#000")
+	.attr("dy", ".60em")
+	.text(function(d) { return  d.frequency === 0? null: d.frequency; })
+  .attr("x", function(d) { return x(d.letter)+14; })
+  .attr("y", function(d) { if (d.frequency <= 0) { return y(d.frequency)-10; } else { return y(d.frequency)-7; } }) 	
+  .attr("height", 20)
+  .attr("width", x.rangeBand()) ;
+			
+  d3.select("input").on("change", change);
+
+  function change() {
+
+    var x0 = x.domain(data.sort(this.checked
+        ? function(a, b) { return b.frequency - a.frequency; }
+        : function(a, b) { return d3.descending(a.letter, b.letter); })
+        .map(function(d) { return d.letter; }))
+        .copy();
+
+    svg.selectAll(".bar")
+        .sort(function(a, b) { return x0(a.letter) - x0(b.letter); });
+				
+    svg.selectAll(".label")
+        .sort(function(a, b) { return x0(a.letter) - x0(b.letter); });
+				
+    var transition = svg.transition().duration(750),
+        delay = function(d, i) { return i * 50; };
+
+    transition.selectAll(".bar")
+        .delay(delay)
+        .attr("x", function(d) { return x0(d.letter); });
+				
+    transition.selectAll(".label")
+        .delay(delay)
+        .attr("x", function(d) { return x0(d.letter)+13; });
+				
+    transition.select(".x.axis")
+        .call(xAxis)
+      .selectAll("g")
+        .delay(delay)				            
+			.selectAll("text")	
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".3em")
+            .attr("transform", function(d) {
+                return "rotate(-65)"   });
+  }
+});
+
+</script>
+<div style="position:absolute;cursor:pointer;top:50px;left:900px;width:300px;font: 10px sans-serif;text-align:left;vertical-align:center;display:flex;"> <div style="background-color:tomato;width:20px;height:20px; display:inline-block;"></div> <div style="display:inline-block;width:200px;height:20px;vertical-align:center;padding-left: .8em;padding-top: .4em;"> Quantite negative</div></div>
+<div style="position:absolute;cursor:pointer;top:510px;left:20px;"> ###INFO </div>
+<div style="position:absolute;cursor:pointer;top:510px;left:400px;">###INFO2 </div>
+<div style="position:absolute;cursor:pointer;top:510px;left:750px;"> <img style="width:100px;height:100px;" src="40.jpg"> </div>
+<script>
+</script>
+<div style="display:none;">
+<pre>
+<code>
