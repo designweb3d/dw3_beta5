@@ -2,7 +2,7 @@ ______________ PLATEFORME DW3 BETA5 __________________
 
 Cette application web fonctionne comme un CRM/ERP hybride, offrant des fonctionnalités complètes de planification, de comptabilité, d’évaluation et de gestion logistique.
 
-___________ INSTALLATION AVEC COMPOSER _______________
+___________ INSTALLATION AVEC COMPOSER _____________
 
 * 1. Dans le terminal taper la commande suivante: composer require designweb3d/dw3_beta5:@dev
 
