@@ -1,0 +1,81 @@
+@page{padding:0;margin:0mm;}
+@media print {padding:0;margin:0px;}
+@font-face {
+    font-family: RobotoMedium;
+    src:local("RobotoMedium") url(/fonts/RobotoMedium.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+a:link {color:black;text-decoration: none;}
+a:visited {color: #333;text-decoration: none;}
+a:hover {color: midnightblue;text-decoration: none;}
+a:active {color: red;text-decoration: none;}
+*{margin:0;padding:0;}
+body  {
+    font-size: 16px;
+    overflow-x:hidden;
+    font-family: RobotoMedium,sans-serif;
+}
+.bg  {
+    overflow:hidden;
+    background-image: url("/img/bg.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% auto;
+    background-position: top left;
+}
+
+hr {
+    margin: 10px 0;
+    height: 1px;
+    background: #333;
+}
+h1 { padding:0 0 0 5px;font-size:4em;color:rgb(10, 116, 165);letter-spacing: -4px;}
+h2 { padding:0 0 0 7px;font-size:2.5em;font-weight: bold;}
+h3 { padding:0 0 0 9px;font-size:2em;font-weight: bold;}
+h4 { padding:0 0 0 11px;font-size:1.5em;}
+
+
+table{	
+    white-space:nowrap;
+	border-collapse: collapse;
+    border:0px solid grey;
+}
+table tr:nth-child(odd){background-color: #c0d7fa;}
+table tr:nth-child(even){background-color: white;}
+table th {
+	border: 0px solid #333;
+	padding: 5px;
+	background-color: #333;
+	color: white;	
+}
+table td {
+	border: 0px solid #333;
+	padding: 5px;
+}
+
+/*ul > li:before { content: '•';}*/
+/*ul , ul > li {list-style: none;}*/
+ul{margin-left:20px;}
+.main{width:100%;}
+.page{background:#FFF;padding:20px 20px 60px 20px;height:fill;}
+
+#footer {
+    position: fixed; 
+    bottom: 0; 
+    left: 0px; 
+    right: 0px;
+    height: 50px; 
+    background-color: #333;
+    color: white;
+    text-align: center;
+    line-height: 35px;
+    font-size:0.7em;
+}
+
+#footer .page-number:after {
+    content: counter(page);
+}
+.logo_top{
+    position:absolute;top:0px;right:0px;height:50px;width:auto;margin:15px 10px 0px 0px;
+}
