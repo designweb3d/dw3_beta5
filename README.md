@@ -1,14 +1,14 @@
-========PLATEFORME DW3 BETA5 (designweb3d.com)======
+============== PLATEFORME DW3 BETA5 ===============
 
 Cette application web fonctionne comme un CRM/ERP hybride, offrant des fonctionnalités complètes de planification, de comptabilité, d’évaluation et de gestion logistique.
 
-==============INSTALLATION AVEC COMPOSER============
+============ INSTALLATION AVEC COMPOSER ===========
 
 * 1. Dans le terminal taper la commande suivante: composer require designweb3d/dw3_beta5:@dev
 
 * 2. Déplacer les fichiers à la racine du dossier publique et continuez avec l'étape 3 de la section suivante.
 
-==========INSTALLATION AVEC LE FICHIER ZIP==========
+======== INSTALLATION AVEC LE FICHIER ZIP ========
 
 Vous pouvez le trouver sur [GitHub][https://github.com/designweb3d/dw3_beta5][version minimale] ou sur [DesignWeb3D][https://designweb3d.com][version complète]
 
