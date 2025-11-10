@@ -5,7 +5,7 @@
     $LAT = $_GET['LNG'];
 
     //DATAIA -canada id:47
-    $mysqli7 = mysqli_connect("localhost","uaqkv257_kufu","2IprgfQr@p8L","uaqkv257_UNIVERS");
+    $mysqli7 = mysqli_connect("","","","");
     $mysqli7->set_charset("utf8");
     //$charset = $mysqli7 -> character_set_name(); //echo "Default character set is: " . $charset;
     $client_info = mysqli_get_client_info();
