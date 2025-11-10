@@ -12,8 +12,5 @@
             "homepage": "https://designweb3d.com",
             "role": "Developer"
         }
-    ],
-    "require": {
-        "php": ">=7.3"
-    }
+    ]
 }
