@@ -10,7 +10,7 @@ ___________ INSTALLATION AVEC COMPOSER _____________
 
 _________ INSTALLATION AVEC LE FICHIER ZIP ___________
 
-Vous pouvez le trouver sur [GitHub][https://github.com/designweb3d/dw3_beta5][version minimale] ou sur [DesignWeb3D][https://designweb3d.com][version complète]
+Vous pouvez le trouver sur [GitHub][https://github.com/designweb3d/dw3_beta5] (version minimale) ou sur [DesignWeb3D][https://designweb3d.com] (version complète)
 
 * 1. Déplacer les fichiers et les dossiers décompréssés de DW3_BETAX.zip à la racine du site web, habituellement [/public_html].
 
