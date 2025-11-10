@@ -13,10 +13,6 @@
             "role": "Developer"
         }
     ],
-    "require": {
-        "php": ">=8.2",
-        "designweb3d/dw3_beta5": "*"
-    },
     "config": {
         "platform": {
             "php": "8.2"
