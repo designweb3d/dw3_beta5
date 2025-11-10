@@ -1,0 +1,19 @@
+{
+    "name": "dw3/platform",
+    "type": "library",
+    "description": "26 applications working together to manage a website and a business.",
+    "keywords": ["dw3","platform"],
+    "homepage": "https://github.com/designweb3d/dw3_beta5",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Julien Béliveau",
+            "email": "info@dw3.ca",
+            "homepage": "https://designweb3d.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.3"
+    }
+}
