@@ -13,9 +13,5 @@
             "role": "Developer"
         }
     ],
-    "config": {
-        "platform": {
-            "php": "8.2"
-        }
-    }
+    "minimum-stability": "beta"
 }
